@@ -65,6 +65,7 @@ class Solver(object):
         img_num = len(self.test_loader)
         for i, data_batch in enumerate(self.test_loader):
             images, name, im_size = data_batch['image'], data_batch['name'][0], np.asarray(data_batch['size'])
+            print('%s start.' % (name))
             with torch.no_grad():
                 images = Variable(images)
                 if self.config.cuda:
@@ -73,6 +74,7 @@ class Solver(object):
                 pred = np.squeeze(torch.sigmoid(preds).cpu().data.numpy())
                 multi_fuse = 255 * pred
                 cv2.imwrite(os.path.join(self.config.test_fold, name[:-4] + '_' + mode_name + '.png'), multi_fuse)
+                print('%s end.' % (name))
         time_e = time.time()
         print('Speed: %f FPS' % (img_num/(time_e-time_s)))
         print('Test Done!')
