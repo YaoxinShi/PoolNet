@@ -115,3 +115,19 @@ Please email {j04.liu, andrewhoux}@gmail.com.
 ```
 
 Thanks to [DSS](https://github.com/Andrew-Qibin/DSS) and [DSS-pytorch](https://github.com/AceCoooool/DSS-pytorch).
+
+
+=========
+Python install:
+* pip install torch==1.5.0+cpu torchvision==0.6.0+cpu -f https://download.pytorch.org/whl/torch_stable.html   (choose from https://pytorch.org/)
+* pip install opencv-python
+
+Download pre-trained model from below and copy it to PoolNet/dataset/pretrained/final_run0.pth
+* PoolNet-ResNet50 w/o edge model [run-0](https://drive.google.com/open?id=12Zgth_CP_kZPdXwnBJOu4gcTyVgV2Nof). The model is in 'run-0/models/final.pth'.
+
+Donwload DITS dataset from below and unzip to PoolNet/data/DUTS:
+* [DUTS](https://drive.google.com/open?id=1immMDAPC9Eb2KCtGi6AdfvXvQJnSkHHo) dataset. The .lst file for training is `data/DUTS/DUTS-TR/train_pair.lst`.
+
+Command line:
+* python main.py --mode=test --model=dataset/pretrained/final_run0.pth --test_fold=results --sal_mode=g --no-cuda
+* python main.py --mode=test --model=dataset/pretrained/final_run0.pth --test_fold=results --sal_mode=e --no-cuda
